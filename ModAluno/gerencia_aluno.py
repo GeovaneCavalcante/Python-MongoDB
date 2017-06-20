@@ -5,7 +5,7 @@ import time
 
 client = MongoClient()
 db = client['Escola']
-alunos = db['alunos']
+alunos = db['alunovis']
 cursos = db['cursos']
 
 def gerenciaAluno():
@@ -87,9 +87,7 @@ def editaraluno():
             '_Aluno__matricula': ma,
         }
     )
-
-    print(no, id, ma)
-    time.sleep(4)
+    gerenciaAluno()
 
 def addcurso():
 
@@ -118,6 +116,7 @@ def addcurso():
         }
 
     )
+    gerenciaAluno()
 
 
 def editarcurso():
@@ -147,6 +146,7 @@ def editarcurso():
         }
 
     )
+    gerenciaAluno()
 
 
 def removercurso():
@@ -170,7 +170,7 @@ def removercurso():
         }
 
     )
-
+    gerenciaAluno()
 
 def listaalunos():
 

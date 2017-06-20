@@ -1,9 +1,5 @@
-from pymongo import MongoClient
 from ModCurso.gerencia_cursos import gerenciaCurso
 from ModAluno.gerencia_aluno import gerenciaAluno
-
-client = MongoClient()
-db = client['Escola']
 
 
 def main():

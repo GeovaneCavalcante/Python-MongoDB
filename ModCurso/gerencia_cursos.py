@@ -29,7 +29,6 @@ def gerenciaCurso():
     print("Digite 5 para remover uma disciplina: ")
     print("Digite 6 para listar todos os cursos: ")
     print("Digite 7 para listar as disciplinas de um determinado curso: ")
-    print("Digite 8 para listar os alunos de um determinado curso: ")
 
     try:
         x = int(input("Digite a opção desejada: "))
@@ -45,8 +44,21 @@ def addcurso():
     os.system('clear')
     c = Curso(str(input("Digite o nome do curso: ")))
 
-    conclue = cursos.insert_one(c.__dict__).inserted_id
+    cursos.insert_one(c.__dict__).inserted_id
     print("Curso adicionado! ")
+    gerenciaCurso()
+
+
+def removecurso():
+
+    print("\n\nCursos: ")
+
+    for x in cursos.find():
+        print("\t " + x['_Curso__nome'])
+
+    n = str(input("Digite o nome do banco que deseja remover: "))
+
+    cursos.remove({'_Curso__nome': n})
     gerenciaCurso()
 
 
@@ -70,19 +82,6 @@ def editarcuro():
             )['_Curso__disciplinas']
         }
     )
-    gerenciaCurso()
-
-
-def removecurso():
-
-    print("\n\nCursos: ")
-
-    for x in cursos.find():
-        print("\t " + x['_Curso__nome'])
-
-    n = str(input("Digite o nome do banco que deseja remover: "))
-
-    cursos.remove({'_Curso__nome': n})
     gerenciaCurso()
 
 
